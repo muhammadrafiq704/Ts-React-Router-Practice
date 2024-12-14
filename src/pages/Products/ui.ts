@@ -28,7 +28,7 @@ export const ProductImage = styled("div") ({
 
   mixBlendMode: "color-burn",
   "& img": {
-    width: 50,
+    width: 64,
     ObjectFit: "contain",
   },
 });
@@ -43,18 +43,19 @@ export const ProductContentContainer = styled("div")(({ theme }) => ({
   // border: `1px solid ${theme.palette.primary.main}`,
   "& p": {
     color: theme.palette.primary.light,
-    fontSize: "12px",
+    fontSize: "24px",
     textAlign: "center",
     textTransform: "uppercase",
   },
   "& span": {
     color: theme.palette.primary.light,
+    fontSize: '14px'
   },
 }));
 
 export const UIButton = styled("button")(({ theme }) => ({
   color: theme.palette.primary.main,
   backgroundColor: theme.palette.background.paper,
-  padding: "4px 10px",
+  padding: "10px 14px",
   cursor: "pointer",
 }));
