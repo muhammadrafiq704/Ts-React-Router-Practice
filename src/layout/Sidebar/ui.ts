@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 // sidebar main container
 export const SideBarWrapper = styled("div")(({ theme }) => ({
-  width: "200px",
+  width: "300px",
   display: "flex",
   flexDirection: "column",
   overflowX: "hidden",
@@ -22,7 +22,7 @@ export const SidebarLogo = styled("div")(({ theme }) => ({
   justifyContent: "center",
   borderBottom: `1px solid ${theme.palette.primary.light}`,
   "& img": {
-    height: 40,
+    height: 50,
     objectFit: "contain",
   },
 }));
@@ -36,7 +36,7 @@ export const SidebarChild = styled(NavLink)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   fontFamily: theme.typography.fontFamily,
-  fontSize: 12,
+  fontSize: 24,
   fontWeight: "bold",
   alignItems: "center",
   justifyContent: "center",
