@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UIFallBackElement = () => {
+const UIFallBackElement: React.FC = () => {
   return (
     <div>UIFallBackElement</div>
   )
