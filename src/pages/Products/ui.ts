@@ -37,7 +37,7 @@ export const ProductContentContainer = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width:'100dvh',
+  width:'150dvh',
   flexDirection: "column",
   marginTop: "-18px",
   // border: `1px solid ${theme.palette.primary.main}`,
