@@ -1,15 +1,13 @@
 import { defer, LoaderFunction } from "react-router-dom";
 
-const Loader: LoaderFunction = async ({ params }) => {
+const loader: LoaderFunction = async ({ params }) => {
   // console.log("params.id", params.id);
   try {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${params.id}`
-    );
-    const product = await response.json();
-    // console.log("product", product);
+    const response = fetch(`https://fakestoreapi.com/products/${params.id}`);
+    const product = (await response).json();
+    console.log("single product", response);
     return defer({
-      product
+      product,
     });
   } catch (error) {
     console.log("Error getting single product");
@@ -17,4 +15,4 @@ const Loader: LoaderFunction = async ({ params }) => {
   }
 };
 
-export default Loader;
+export default loader;
