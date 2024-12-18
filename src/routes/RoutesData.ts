@@ -1,6 +1,8 @@
 const RoutesData = {
     ROOT: '/',
     PRODUCTS: "/",
-    SINGLEPRODUCTS: "/:id"
+    ADDPRODUCT: "/product/add",
+    SINGLEPRODUCTS: "/:id",
+    EDITPRODUCT: "/:id/edit",
 }
-export default RoutesData;
+export default RoutesData; 

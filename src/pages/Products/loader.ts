@@ -5,7 +5,7 @@ const laoder: LoaderFunction = async () => {
   try {
     const response = fetch("https://fakestoreapi.com/products");
     const products = (await response).json();
-    console.log("products", products);
+    // console.log("products", products);
     return defer({
       products,
     });

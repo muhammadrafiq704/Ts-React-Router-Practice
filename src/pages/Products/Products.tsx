@@ -1,16 +1,19 @@
 import React, { Suspense } from "react";
-import { Await, useLoaderData, useNavigation } from "react-router-dom";
+import { Await, NavLink, useLoaderData } from "react-router-dom";
 import {
-  Navlink,
+  ProductCard,
   ProductContainer,
   ProductContentContainer,
   ProductImage,
   UIButton,
+  UIButtonContainer,
 } from "./ui";
-import { Box, LinearProgress } from "@mui/material";
+import { Box } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 // typescript types define here
-type Product = { 
+type Product = {
   id: number;
   image: string;
   category: string;
@@ -21,35 +24,48 @@ type Product = {
 
 const Products: React.FC = () => {
   const { products } = useLoaderData() as { products: Promise<Product[]> };
-  console.log("loaderData", products);
-  const navigation = useNavigation();
-// console.log('navigation', navigation)
+
   return (
     <ProductContainer>
-      {navigation.state === "idle" && <LinearProgress />}
-      <Suspense fallback={<div>Loading...</div>}>
-        <Await
-          errorElement={<div>Error occurred while loading products</div>}
-          resolve={products}
-        >
+      <Suspense
+        fallback={
+          <CircularProgress
+            variant="determinate"
+            size={40}
+            thickness={4}
+            value={100}
+          />
+        }
+      >
+        <Await errorElement={<ErrorBoundary />} resolve={products}>
           {(resolvedProducts) =>
             resolvedProducts.slice(0, -16).map((product: Product) => (
-              <Navlink to={`/${product.id}`} key={product.id}>
-                <ProductImage key={product.id}>
-                  <img src={product.image} alt={`Product ${product.id}`} />
-                </ProductImage>
-                <ProductContentContainer>
-                  <Box p="2em">
-                    <p>{product.category}</p>
-                    <span style={{ fontWeight: "bold" }}>{product.title}</span>
-                  </Box>
-                  <span style={{ fontWeight: "bold", color: "orange" }}>
-                    Price:{product.price.toFixed(2)}
-                  </span>
-
-                  <UIButton>Details</UIButton>
-                </ProductContentContainer>
-              </Navlink>
+              <>
+                <ProductCard key={product.id}>
+                  <ProductImage key={product.id}>
+                    <img src={product.image} alt={`Product ${product.id}`} />
+                  </ProductImage>
+                  <ProductContentContainer>
+                    <Box p="2em">
+                      <p>{product.category}</p>
+                      <span style={{ fontWeight: "bold" }}>
+                        {product.title}
+                      </span>
+                    </Box>
+                    <span style={{ fontWeight: "bold", color: "orange" }}>
+                      Price:{product.price.toFixed(2)}
+                    </span>
+                    <UIButtonContainer>
+                      <NavLink to={`${product.id}`}>
+                        <UIButton>Details</UIButton>
+                      </NavLink>
+                      <NavLink to="/product/add">
+                        <UIButton>Add</UIButton>
+                      </NavLink>
+                    </UIButtonContainer>
+                  </ProductContentContainer>
+                </ProductCard>
+              </>
             ))
           }
         </Await>

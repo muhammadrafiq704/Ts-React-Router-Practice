@@ -1,5 +1,4 @@
-import { styled } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import {  styled } from "@mui/material";
 
 export const ProductContainer = styled("div")({
   display: "flex",
@@ -8,7 +7,8 @@ export const ProductContainer = styled("div")({
   flexDirection: "column",
   width: "100%",
 });
-export const Navlink = styled(NavLink)({
+
+export const ProductCard = styled('div')({
   // flex : 1,
   textDecoration: "none",
   border: ` 1px solid`,
@@ -52,10 +52,60 @@ export const ProductContentContainer = styled("div")(({ theme }) => ({
     fontSize: '14px'
   },
 }));
-
+export const UIButtonContainer = styled('div')({
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center'
+  
+})
 export const UIButton = styled("button")(({ theme }) => ({
   color: theme.palette.primary.main,
   backgroundColor: theme.palette.background.paper,
   padding: "10px 14px",
   cursor: "pointer",
+  textTransform:'uppercase'
 }));
+
+export const FormContentContainer = styled('div')({
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  backgroundColor: "palegoldenrod",
+  margin: "10px"
+})
+
+export const FormContainer = styled("div")(({theme})=>({
+  fontFamily: theme.typography.fontFamily,
+  fontSize:'10px',
+  display:'flex',
+  flexDirection:'column',
+  alignItems:'center',
+  gap:'10px',
+  padding:'24px',
+  width: "100dvh",
+ 
+  '& input': {
+    width:'100dvh',
+    padding:'16px',
+    borderRadius:'8px',
+    
+  },
+  '& label': {
+    fontSize: '16px',
+    
+  },
+  '& h3': {
+    fontSize: '24px',
+    marginBottom : "-10px",
+    color: theme.palette.primary.light
+  },
+  '& button': {
+    fontSize: '16px',
+    marginBottom : "-10px",
+    padding: "16px",
+    fontWieght:'bold',
+    textTransform: "uppercase",
+    color: theme.palette.primary.light
+  },
+
+}))
