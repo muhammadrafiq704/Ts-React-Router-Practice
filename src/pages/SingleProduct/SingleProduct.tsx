@@ -17,7 +17,7 @@ const SingleProduct: React.FC = () => {
   const navigate = useNavigate();
 
   // console.log("params", params);
-  console.log("product", product);
+  // console.log("product", product);
   // function for deleting prodict
   const handleDelete = async () => {
     const confirmed = window.confirm(
@@ -65,7 +65,7 @@ const SingleProduct: React.FC = () => {
                   <NavLink to="/">
                     <UIButton>Go Back</UIButton>
                   </NavLink>
-                  <NavLink to={`/${product.id}/edit`} state={{product}}>
+                  <NavLink to={`/${product.id}/edit`}>
                     <UIButton>Edit</UIButton>
                   </NavLink>
                   <NavLink onClick={handleDelete} to={""}>

@@ -55,7 +55,12 @@ export const ProductContentContainer = styled("div")(({ theme }) => ({
 export const UIButtonContainer = styled('div')({
   display:'flex',
   justifyContent:'center',
-  alignItems:'center'
+  gap:'4px',
+  alignItems:'center',
+  '& button':{
+    cursor: 'pointer'
+  }
+
   
 })
 export const UIButton = styled("button")(({ theme }) => ({
