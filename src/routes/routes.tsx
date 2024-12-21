@@ -14,6 +14,14 @@ const routes = (
         path={RoutesData.SINGLEPRODUCTS}
         lazy={() => import("../pages/SingleProduct")}
       />
+      <Route
+        path={RoutesData.EDITPRODUCT}
+        lazy={() => import("../pages/EditProduct")}
+      />
+      <Route
+        path={RoutesData.ADDPRODUCT}
+        lazy={() => import("../pages/AddProduct/index")}
+      />
     </Route>
   </Route>
 );

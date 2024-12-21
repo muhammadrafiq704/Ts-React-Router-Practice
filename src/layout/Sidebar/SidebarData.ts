@@ -11,9 +11,15 @@ const SidebarData = [
     },
     // {   
     //     id: 2,
-    //     title: 'Product Single',
+    //     title: 'Product Form',
     //     icon: SelfImprovementIcon ,
-    //     path:RoutesData.SINGLEPRODUCTS
+    //     path:RoutesData.CONTACT
+    // },
+    // {   
+    //     id: 2,
+    //     title: 'Product Single Form',
+    //     icon: SelfImprovementIcon ,
+    //     path:RoutesData.SINGLECONTACT
     // },
 
 ]
