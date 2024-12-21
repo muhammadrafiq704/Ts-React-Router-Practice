@@ -2,7 +2,7 @@ import { ActionFunction, redirect } from "react-router-dom";
 
 const action: ActionFunction = async ({ request, params }) => {
   try {
-    // console.log("request", request);
+    console.log("params", params);
     const data = await request.formData();
 
     const updatedData = {
@@ -31,13 +31,13 @@ const action: ActionFunction = async ({ request, params }) => {
         alert("Failed to update product");
       }
       alert(`product updated successfully ${data.get("category")}`);
-      redirect(`/${params}`);
+      redirect(`/${params.id}`);
     }
   } catch (error) {
     console.log("error found while editing", error);
   }
 
-  return redirect(`/${params}`); 
+  return redirect(`/${params.id}`); 
 };
 
 export default action;

@@ -49,7 +49,28 @@ const SingleProduct: React.FC = () => {
         <Suspense fallback={<LinearProgress />}>
           <Await
             resolve={product}
-            errorElement={<div>Error while fetching product details</div>}
+            errorElement={
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    gap: 10,
+                  }}
+                >
+                  <h2 style={{ color: "orangered" }}>
+                    Error found while products page render
+                  </h2>
+                  <button
+                    onClick={() => navigate("/")}
+                    style={{ padding: "10px 12px", fontSize: "12px" }}
+                  >
+                    Go Back
+                  </button>
+                </div>
+              </>
+            }
           >
             {(product) => (
               <SingleProductCard>
