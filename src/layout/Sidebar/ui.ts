@@ -8,37 +8,33 @@ export const SideBarWrapper = styled("div")(({ theme }) => ({
   flexDirection: "column",
   overflowX: "hidden",
   overflowY: "auto",
-  alignItems: "center",
+  // alignItems: "center",
+  padding: "10px",
 
   fontFamily: theme.typography.fontFamily,
 }));
 
 // for logo sidebar
 export const SidebarLogo = styled("div")(({ theme }) => ({
-  width: "130px",
+  width: "280px",
   display: "flex",
   alignItems: "center",
-  padding: " 10px",
+  // padding: " 10px",
   justifyContent: "center",
   borderBottom: `1px solid ${theme.palette.primary.light}`,
   "& img": {
-    height: 50,
+    height: 80,
     objectFit: "contain",
   },
 }));
-
-// nav links side bar
-export const NavLinkSection = styled("div")({
-  flex: 1,
-});
 
 export const SidebarChild = styled(NavLink)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   fontFamily: theme.typography.fontFamily,
-  fontSize: 24,
+  fontSize: 14,
+  paddingLeft: "20px",
   fontWeight: "bold",
-  alignItems: "center",
-  justifyContent: "center",
+  alignItems: "baseline",
   textDecoration: "none",
 }));

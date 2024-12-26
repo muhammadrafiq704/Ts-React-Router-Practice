@@ -1,14 +1,20 @@
 import React from "react";
 import {
   Await,
+  SubmitOptions,
+  useActionData,
   useLoaderData,
   useNavigate,
-  useParams,
   useSubmit,
 } from "react-router-dom";
 import { FormContainer, FormContentContainer } from "../Products/ui";
 import { CircularProgress } from "@mui/material";
 import { FieldValues, useForm } from "react-hook-form";
+
+interface ActionData {
+  status?: string;
+  message?: string;
+}
 
 const EditFormComponent: React.FC = () => {
   const { product } = useLoaderData() as { product: unknown };
@@ -16,30 +22,44 @@ const EditFormComponent: React.FC = () => {
   // const product = Promise.reject(new Error("Simulated fetch error"));
 
   const submit = useSubmit();
-  const params = useParams();
   const navigate = useNavigate();
-  const { id } = params;
+  const actionData = useActionData() as ActionData | null;
+
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data: FieldValues) => {
-    const formData = new FormData();
-
-    Object.entries(data).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
-
-    submit(formData, {
-      method: "put",
-      action: `/${id}/edit`,
-    });
+    const submitOptions: SubmitOptions = {
+      method: "PUT",
+      encType: "application/json",
+    };
+    submit(data, submitOptions);
   };
-  // console.log("errors", errors);
-  return (
+
+  console.log("actionData", actionData);
+  console.log("errors", errors);
+
+  return actionData?.status ? (
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "10px",
+          gap: "10px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h4>{actionData.status}</h4>
+        <span>{actionData.message}</span>
+        <button onClick={() => navigate(-1)}>Go Back</button>
+      </div>
+    </>
+  ) : (
     <FormContentContainer>
       <React.Suspense
         fallback={

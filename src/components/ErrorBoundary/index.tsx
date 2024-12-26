@@ -1,18 +1,25 @@
-import React from "react";
-import { useRouteError } from "react-router-dom";
+import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router-dom";
 import { ErrorBoundaryContainer } from "./ui";
-import { Box } from "@mui/material";
 
-const ErrorBoundary: React.FC = () => {
+function ErrorBoundary() {
   const error = useRouteError();
-  console.log("error", error);
+ const navigate = useNavigate();
+  // console.log("error", error);
 
-
-  return (
-    <ErrorBoundaryContainer>
-      {error ? <Box>Something Went Wrong!</Box> : null}
-    </ErrorBoundaryContainer>
-  );
-};
-
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    return (
+      <ErrorBoundaryContainer>
+          <h1>{error.statusText}</h1>
+          <h2>{error.status}</h2>
+          <p>
+            Go ahead and email {error.data} if you feel like this is a mistake.
+          </p>
+          <button onClick={()=> navigate('/')}>
+            Go Back
+          </button>
+      </ErrorBoundaryContainer>
+    );
+  }
+  throw error;
+}
 export default ErrorBoundary;

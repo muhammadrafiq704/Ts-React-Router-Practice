@@ -6,8 +6,14 @@ const SidebarData = [
     {
         id: 1,
         title: 'Product',
-        icon: CategoryIcon ,
+        icon: CategoryIcon,
         path: RoutesData.PRODUCTS
+    },
+    {
+        id: 1,
+        title: 'Categories',
+        icon: CategoryIcon ,
+        path: RoutesData.CATEGORIES
     },
     // {   
     //     id: 2,

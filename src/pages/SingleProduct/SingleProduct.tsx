@@ -60,7 +60,7 @@ const SingleProduct: React.FC = () => {
                   }}
                 >
                   <h2 style={{ color: "orangered" }}>
-                    Error found while products page render
+                    Error found while single products page render
                   </h2>
                   <button
                     onClick={() => navigate("/")}

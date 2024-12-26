@@ -2,42 +2,37 @@ import { ActionFunction, redirect } from "react-router-dom";
 
 const action: ActionFunction = async ({ request, params }) => {
   try {
-    console.log("params", params);
-    const data = await request.formData();
+    // console.log("request.json()", request.json());
+    const { id } = params;
+    console.log("id", id);
 
-    const updatedData = {
-      title: data.get("title"),
-      price: data.get("price"),
-      category: data.get("category"),
-      description: data.get("description"),
-      image: data.get("image"),
-    };
+    switch (request.method) {
+      case "PUT": {
+        const formData = await request.json();
+        console.log("formData", formData);
 
-    // for edit product
-    // console.log("updatedData", updatedData);
-    if (request.method === "PUT") {
-      const response = await fetch(
-        `https://fakestoreapi.com/products/${params.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedData),
-        }
-      );
-   
-      if (!response.ok) {
-        alert("Failed to update product");
+        const response = await fetch(
+          `https://fakestoreapi.com/products/${params.id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+        alert(`product updated successfully ${formData.category}`);
+        redirect(`/${params.id}`);
+        return response.json();
       }
-      alert(`product updated successfully ${data.get("category")}`);
-      redirect(`/${params.id}`);
+      default:
+        throw new Error(`Unsupported  request method: ${request.method} `);
     }
   } catch (error) {
     console.log("error found while editing", error);
   }
 
-  return redirect(`/${params.id}`); 
+  return redirect(`/${params.id}`);
 };
 
 export default action;

@@ -21,6 +21,7 @@ export const ProductImage = styled("div") ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  marginBottom:'4px',
   flexDirection: "column",
   // gap:'10px',
   // margin: '10px',

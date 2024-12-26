@@ -2,24 +2,23 @@ import { ActionFunction, redirect } from "react-router-dom";
 
 const action: ActionFunction = async ({ request }) => {
   try {
-    console.log("request", request);
-    const data = await request.formData();
-
-    const updatedData = {
-      title: data.get("title"),
-      price: data.get("price"),
-      category: data.get("category"),
-      description: data.get("description"),
-      image: data.get("image"),
-    };
-
-    // for edit product
-    if (request.method === "POST") {
-      fetch("https://fakestoreapi.com/products", {
-        method: "POST",
-        body: JSON.stringify(updatedData),
-      }).then((response) => response.json());
-      alert(`product Added successfully ${data.get("category")}`);
+    switch (request.method) {
+      case "POST": {
+        const formData = await request.json();
+        console.log('formData', formData)
+      
+        const response = await fetch(`https://fakestoreapi.com/products/`, {
+          method: "POST", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        alert(`product updated successfully ${formData.category}`);
+        return response.json();
+      }
+      default:
+        throw new Error(`Unsupported  request method: ${request.method} `);
     }
   } catch (error) {
     alert("error found while adding");
