@@ -30,11 +30,24 @@ export const SidebarLogo = styled("div")(({ theme }) => ({
 
 export const SidebarChild = styled(NavLink)(({ theme }) => ({
   display: "flex",
-  flexDirection: "column",
+  // flexDirection: "column",
+  justifyContent:'space-between',
   fontFamily: theme.typography.fontFamily,
-  fontSize: 14,
+  fontSize: 16,
   paddingLeft: "20px",
   fontWeight: "bold",
-  alignItems: "baseline",
+  alignItems: "center",
   textDecoration: "none",
+
+  "&:hover": {
+    color: theme.palette.primary.light, 
+  },
+  "& div": {
+    display: 'flex',
+    alignItems: "baseline",
+
+  },
+  // "& div": {
+
+  // },
 }));

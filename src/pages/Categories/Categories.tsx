@@ -16,7 +16,7 @@ const Categories: React.FC = () => {
             to={`/products/categories/${category}`}
             key={category}
           >
-            {index}. {category}
+            {index}.{category}
           </CategoryNavlink>
         ))}
       </CategoryContainer>

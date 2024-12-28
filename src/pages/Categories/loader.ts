@@ -6,7 +6,7 @@ const laoder: LoaderFunction = async () => {
       "https://fakestoreapi.com/products/categories"
     );
     if (response.status === 404) {
-      throw new Response("Categoried Not Found", { status: 404 });
+      throw new Response("Categories Not Found", { status: 404 });
     }
 
     const categories = await response.json();
